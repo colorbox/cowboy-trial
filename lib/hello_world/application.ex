@@ -8,6 +8,9 @@ defmodule HelloWorld.Application do
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
 
+    dispatch  = :cowboy_router.compile routes
+    {:ok, _} = :cowboy.start_clear :http, 100, [{:port, 4000}], %{:env => %{:dispatch =>  dispatch}}
+
     # Define workers and child supervisors to be supervised
     children = [
       # Starts a worker by calling: HelloWorld.Worker.start_link(arg1, arg2, arg3)
@@ -19,4 +22,14 @@ defmodule HelloWorld.Application do
     opts = [strategy: :one_for_one, name: HelloWorld.Supervisor]
     Supervisor.start_link(children, opts)
   end
+
+  defp routes do
+    [
+      {
+        :_,
+        [ {"/hello-school-live", HelloSchoolLive.Handlers.HelloSchoolLive, []} ]
+      }
+    ]
+  end
+
 end
