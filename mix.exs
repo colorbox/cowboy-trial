@@ -29,6 +29,8 @@ defmodule HelloWorld.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
-  end
+    [
+      {:cowboy, github: "ninenines/cowboy"}, # ← 追記
+    ]
+    end
 end
