@@ -16,7 +16,7 @@ defmodule HelloWorld.Mixfile do
   def application do
     # Specify extra applications you'll use from Erlang/Elixir
     [applications: [:logger, :cowboy], # ← `:cowboy`を追記
-     mod: {HelloSchoolLive, []}]
+     mod: {HelloWorld, []}]
   end
 
   # Dependencies can be Hex packages:
