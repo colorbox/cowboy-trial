@@ -23,11 +23,13 @@ defmodule HelloWorld.Application do
     Supervisor.start_link(children, opts)
   end
 
+
+
   defp routes do
     [
       {
         :_,
-        [ {"/hello-school-live", HelloSchoolLive.Handlers.HelloSchoolLive, []} ]
+        [ {"/hello-world", HelloWorld.Handlers.HelloWorld, []} ]
       }
     ]
   end
